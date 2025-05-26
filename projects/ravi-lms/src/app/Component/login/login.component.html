@@ -1,0 +1,48 @@
+   <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+     <span class="navbar-brand mb-0 h1">Login Portal</span>
+      <button class="btn btn-outline-primary" (click)="goHome()">Home</button>
+    </div>
+   </nav>
+
+
+
+<div class="background-wrapper">
+  <div class="login-container" @fadeSlideIn>
+    <img src="/images/RHSlogo.jpg" alt="Logo" class="logo" />
+
+    <h2 class="login-title">Login</h2>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <form (ngSubmit)="login()">
+      <div class="form-group">
+        <label>Email</label>
+        <input [(ngModel)]="email" name="email" type="email" class="form-control" required />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input [(ngModel)]="password" name="password" type="password" class="form-control" required />
+      </div>
+
+      <div class="form-group">
+        <label>Role</label>
+        <select [(ngModel)]="role" name="role" class="form-control">
+          <option value="Student">Student</option>
+          <option value="Teacher">Teacher</option>
+          <option value="Admin">Admin</option>
+        </select>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="!email || !password">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<nav class="navbar">
+  <div class="navbar-brand">Admin Dashboard</div>
+  Hi Admin
+  <button (click)="logout()" class="logout-btn">Logout</button>
+</nav>
+
+<div class="counts-container">
+  <div class="count-box">
+    Pending Students 🎓<br />
+    <span class="count-number">{{ counts.pendingStudents }}</span>
+  </div>
+  <div class="count-box">
+    Approved Students 🎓<br />
+    <span class="count-number">{{ counts.approvedStudents }}</span>
+  </div>
+  <div class="count-box">
+    Pending Teachers 👨‍🏫<br />
+    <span class="count-number">{{ counts.pendingTeachers }}</span>
+  </div>
+  <div class="count-box">
+    Approved Teachers 👨‍🏫<br />
+    <span class="count-number">{{ counts.approvedTeachers }}</span>
+  </div>
+</div>
+
+<section class="pending-section">
+  <h2>Pending Students 🎓</h2>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of pendingStudents">
+        <td>{{ student.studentId }}</td>
+        <td>{{ student.fullName }}</td>
+        <td>{{ student.email }}</td>
+        <td><button class="btn-approve" (click)="approveStudent(student.studentId)">Approve</button></td>
+      </tr>
+      <tr *ngIf="pendingStudents.length === 0">
+        <td colspan="4" class="no-data">No pending students</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="pending-section">
+  <h2>Pending Teachers 👨‍🏫</h2>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Teacher ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of pendingTeachers">
+        <td>{{ teacher.teacherId }}</td>
+        <td>{{ teacher.fullName }}</td>
+        <td>{{ teacher.email }}</td>
+        <td><button class="btn-approve" (click)="approveTeacher(teacher.teacherId)">Approve</button></td>
+      </tr>
+      <tr *ngIf="pendingTeachers.length === 0">
+        <td colspan="4" class="no-data">No pending teachers</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

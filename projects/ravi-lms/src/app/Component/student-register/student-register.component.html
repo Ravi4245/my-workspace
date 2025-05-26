@@ -1,0 +1,38 @@
+   <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+     <span class="navbar-brand mb-0 h1">Student Portal</span>
+      <button class="btn btn-outline-primary" (click)="goHome()">Home</button>
+    </div>
+   </nav>
+
+<div class="background-wrapper">
+  
+
+  <div class="form-container" @fadeSlideIn>
+
+    <img src="/images/RHSlogo.jpg" alt="Logo" class="form-logo" />
+
+    <h2 class="form-title">Student Registration</h2>
+    
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" class="form-control" formControlName="fullName">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="studentForm.invalid">Register</button>
+      </div>
+    </form>
+  </div>
+</div>

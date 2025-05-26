@@ -1,0 +1,41 @@
+<div class="dashboard-container">
+  <nav class="navbar">
+    <div class="logo">Teacher Dashboard</div>
+   <button (click)="logout()" class="logout-btn">Logout</button>
+  </nav>
+
+  <div class="section-container">
+    <div class="card">
+      <h2>Create Course</h2>
+      <input [(ngModel)]="newCourse.courseName" placeholder="Course Name" />
+      <textarea [(ngModel)]="newCourse.description" placeholder="Description"></textarea>
+      <button (click)="createCourse()">Create Course</button>
+    </div>
+
+    <div class="card">
+      <h2>Create Assignment</h2>
+      <select [(ngModel)]="newAssignment.courseId">
+        <option [value]="null">-- Select Course --</option>
+        <option *ngFor="let course of courses" [value]="course.courseId">{{ course.courseName }}</option>
+      </select>
+      <select [(ngModel)]="newAssignment.studentId">
+        <option [value]="null">-- Select Student --</option>
+        <option *ngFor="let student of students" [value]="student.studentId">{{ student.fullName }}</option>
+      </select>
+      <input [(ngModel)]="newAssignment.title" placeholder="Assignment Title" />
+      <textarea [(ngModel)]="newAssignment.description" placeholder="Description"></textarea>
+      <button (click)="createAssignment()">Create Assignment</button>
+    </div>
+  </div>
+
+  <div class="courses-section">
+    <h2>Your Created Courses</h2>
+    <div class="course-cards">
+      <div class="course-card" *ngFor="let course of courses">
+        <h3>{{ course.courseName }}</h3>
+        <p>{{ course.description }}</p>
+        <span>ID: {{ course.courseId }}</span>
+      </div>
+    </div>
+  </div>
+</div>

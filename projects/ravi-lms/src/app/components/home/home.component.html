@@ -1,0 +1,82 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="/images/RHSlogo.jpg" alt="Logo" class="nav-logo">
+    <span class="nav-title"> LEARNING MANAGMENT SYSTEM </span>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="nav-link">Home</a>
+    <a href="#best-teachers" class="nav-link">About</a>
+   
+  </div>
+</nav>
+
+
+<!-- Background Wrapper -->
+<div class="home-wrapper">
+  <div class="glass-card">
+    <!-- <img src="/images/logo.jpg" alt="LMS Logo" class="logo" /> -->
+    <h1>Welcome to <span class="highlight">RHS EDU SYSTEM</span></h1>
+    <p class="subtitle">Learn, Grow, and Succeed Together</p>
+    <div class="btn-group">
+      <button class="btn student" (click)="goToStudentRegister()">🎓 Student Registration</button>
+      <button class="btn teacher" (click)="goToTeacherRegister()">👩‍🏫 Teacher Registration</button>
+      <button class="btn login" (click)="goToLogin()">🔐 Login</button>
+    </div>
+  </div>
+
+  <!-- Best Courses Section -->
+  <div class="best-courses-section text-center">
+    
+    <h2>Our Best Courses</h2>
+    <div class="courses-row">
+      <img *ngFor="let course of bestCourses" [src]="course.image" [alt]="course.name" class="course-img" />
+     
+    </div>
+  </div>
+
+  <!-- Best Teachers Section -->
+  <div class="best-teachers-section">
+    <section id="best-teachers" style="padding: 50px; ">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+          <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Who We Are</h2>
+          <p style="font-size: 1.2rem; color: #0d0c0c; line-height: 1.8;">
+            Our Learning Management System (LMS) is designed to connect students with the best educators in the industry. 
+            After teacher registration, admin approval is required to activate accounts. Once approved, teachers can create 
+            courses and assignments directly from their dashboard.
+          </p>
+          <!-- <p style="font-size: 1.2rem; color: #0e0d0d; line-height: 1.8;">
+            Students can register and, upon approval, gain access to courses, submit assignments, and track their learning 
+            progress. The LMS ensures an organized, role-based experience for admins, teachers, and students alike.
+          </p> -->
+          <p style="font-size: 1.2rem; color: #0c0000; line-height: 1.8;">
+            Our platform empowers teachers with tools to manage educational content efficiently and helps students engage with 
+            their learning journey in a structured, user-friendly environment.
+          </p>
+         </div>
+          <h2>LMS Website Designer</h2>
+          <div class="teachers-row">
+           <div class="teacher-card" *ngFor="let teacher of bestTeachers">
+          <img [src]="teacher.image" [alt]="teacher.name">
+          <div class="teacher-name">{{ teacher.name }}</div>
+          <div class="teacher-subject">{{ teacher.subject }}</div>
+        </div>
+      </div>
+    </section>
+   </div>
+
+    <footer class="footer">
+  <div>
+    &copy; 2025 RHS. All rights reserved.
+    |
+    <a href="#">Privacy Policy</a>
+    |
+    <a href="#">Terms of Service</a>
+  </div>
+  <div>
+ <a href="https://www.instagram.com/" class="nav-link">📷 </a>
+  <a href="https://www.facebook.com/" class="nav-link">📘 </a>
+   <a href="https://x.com/" class="nav-link">🐦 </a>
+  </div>
+</footer>
+
+</div>

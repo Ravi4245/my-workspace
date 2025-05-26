@@ -1,0 +1,26 @@
+<div class="student-dashboard">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="dashboard-title">📚 Student Dashboard</div>
+    <div class="dashboard-user">
+      Hi, {{ studentName }}
+      <button (click)="logout()" class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+  <!-- Assignments Section -->
+  <section class="assignment-section">
+    <h2>📝 Your Assignments</h2>
+    <div *ngIf="approvedAssignments.length > 0; else noAssignments" class="assignment-grid">
+      <div *ngFor="let assignment of approvedAssignments" class="assignment-card">
+        <h3>{{ assignment.title }}</h3>
+        <p><strong>Course:</strong> {{ assignment.courseName }}</p>
+        <p>{{ assignment.description }}</p>
+      </div>
+    </div>
+
+    <ng-template #noAssignments>
+      <p class="no-data">You have no assignments yet.</p>
+    </ng-template>
+  </section>
+</div>
