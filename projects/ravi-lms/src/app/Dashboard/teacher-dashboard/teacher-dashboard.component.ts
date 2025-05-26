@@ -48,7 +48,7 @@ export class TeacherDashboardComponent implements OnInit {
     studentId: null
   };
 
-  teacherId : number = 0; // Replace with actual logged-in teacher ID
+  teacherId : number = 0; 
 
   constructor(private http: HttpClient,private router: Router) {}
 

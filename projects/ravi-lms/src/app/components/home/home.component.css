@@ -282,3 +282,9 @@ body, html {
   height: 100%;
 }
 
+.nav-link i:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s;
+}
+
+
