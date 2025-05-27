@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, HttpClientModule,RouterModule],
   templateUrl: './teacher-register.component.html',
-  styleUrl: './teacher-register.component.css'
+  styleUrls: ['./teacher-register.component.css']
 })
 export class TeacherRegisterComponent {
   
@@ -23,9 +23,21 @@ export class TeacherRegisterComponent {
     this.teacherForm = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required,Validators.minLength(6)]]
     });
   }
+
+        get fullName() {
+      return this.teacherForm.get('fullName');
+    }
+
+    get email() {
+      return this.teacherForm.get('email');
+    }
+
+    get password() {
+      return this.teacherForm.get('password');
+    }
 
     goHome() {
     this.router.navigate(['/home']);
@@ -34,7 +46,9 @@ export class TeacherRegisterComponent {
   onSubmit() {
     if (this.teacherForm.valid) {
       const teacherData = {
-        ...this.teacherForm.value,
+        fullName: this.fullName?.value,
+        email: this.email?.value,
+        password: this.password?.value,
         status: 'Pending' // default
       };
 

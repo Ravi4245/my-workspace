@@ -29,7 +29,7 @@
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.831);
+  box-shadow: 0 10px 30px rgba(25, 3, 3, 0.831);
   margin-bottom: 40px; /* extra space at bottom */
 }
 
@@ -59,7 +59,7 @@
   padding: 10px;
   font-size: 15px;
   border-radius: 8px;
-  border: 1px solid #100000;
+  border: 1px solid #0a0808;
 }
 
 /* Centered Register button */
@@ -126,4 +126,10 @@
 /* Offset content to avoid overlap */
 .background-wrapper {
   padding-top: 80px; /* make room for the fixed navbar */
+}
+
+.text-danger {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #d9534f;
 }

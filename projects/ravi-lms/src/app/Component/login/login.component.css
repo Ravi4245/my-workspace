@@ -11,12 +11,12 @@
 
 /* Login card styling */
 .login-container {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(215, 209, 209, 0.95);
   padding: 40px;
   border-radius: 12px;
   max-width: 400px;
   width: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.925);
 }
 
 /* Logo styling */

@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule,RouterModule],
   templateUrl: './student-register.component.html',
-  styleUrl: './student-register.component.css'
+  styleUrls: ['./student-register.component.css']
 })
 export class StudentRegisterComponent {
   studentForm: FormGroup;
@@ -18,9 +18,21 @@ export class StudentRegisterComponent {
     this.studentForm = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+    password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
+   
+      get fullName() {
+      return this.studentForm.get('fullName');
+    }
+
+    get email() {
+      return this.studentForm.get('email');
+    }
+
+    get password() {
+      return this.studentForm.get('password');
+    }
 
 
      goHome() {
@@ -29,11 +41,14 @@ export class StudentRegisterComponent {
 
 
   onSubmit() {
+     
+      this.studentForm.markAllAsTouched();
+
     if (this.studentForm.valid) {
       const studentData = {
-        fullName: this.studentForm.value.fullName,
-        email: this.studentForm.value.email,
-        password: this.studentForm.value.password,
+        fullName: this.fullName?.value,
+        email: this.email?.value,
+        password: this.password?.value,
         status: 'Pending' // Default status
       };
 

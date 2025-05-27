@@ -121,3 +121,9 @@
   padding-top: 80px; /* make room for the fixed navbar */
 }
 
+.text-danger {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #d9534f;
+}
+
