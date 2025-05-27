@@ -48,3 +48,7 @@ export class AdminService {
   return this.http.put(`https://localhost:7071/api/Admin/approve/teacher/${teacherId}`, {});
   }
 }
+
+
+
+
