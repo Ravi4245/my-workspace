@@ -11,10 +11,11 @@ html {
 }
 
 .home-wrapper {
-  background-image: url('/images/bg-3.jpg');
+  background-image: url('/images/lms3.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   
   /* Make full screen and center contents */
   min-height: 100vh;
@@ -25,7 +26,10 @@ html {
 
   padding: 100px 20px 50px;
   position: relative;
+
+  
 }
+
 
 /* navbaar */
 
@@ -82,15 +86,15 @@ html {
 
 /* Adjust margin to remove extra space from glass card */
 .glass-card {
-  background: rgba(19, 160, 69, 0.336);
+  background: rgba(72, 75, 75, 0.836);
   border-radius: 20px;
   padding: 40px;
   max-width: 700px;
   width: 90%;
   backdrop-filter: blur(10px);
-  color: #0d0f0e;
+  color: #e4eae7;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(19, 1, 1, 0.938);
+  box-shadow: 0 8px 32px rgb(1, 0, 0);
   margin: 0; /* remove margin */
 }
 .logo {
@@ -99,7 +103,7 @@ html {
 }
 
 .highlight {
-  color: #86395f;
+  color: #a3088c;
 }
 
 .subtitle {
@@ -166,10 +170,12 @@ html {
   object-fit: cover;
   border-radius: 10px;
   transition: 0.3s ease;
+  box-shadow: #000704;
 }
 
 .course-img:hover {
   transform: scale(1.05);
+  box-shadow: #080114;
 }
 
 .course-name{
@@ -190,7 +196,7 @@ html {
 .best-teachers-section h2 {
   margin-bottom: 30px;
   font-size: 28px;
-  color: #140101;
+  color: #030000;
 }
 
 .teachers-row {
@@ -220,14 +226,14 @@ html {
 
 .teacher-name {
   margin-top: 12px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #100101;
 }
 
 .teacher-subject {
-  font-size: 14px;
-  color: #0e0101;
+  font-size: 17px;
+  color: #0c0000;
 }
 
 
@@ -266,7 +272,7 @@ html {
 }
 
 .footer-content a {
-  color: #d8d7e0;
+  color: #02010f;
   margin: 0 10px;
   text-decoration: none;
 }
