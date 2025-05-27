@@ -88,7 +88,7 @@ html {
   max-width: 700px;
   width: 90%;
   backdrop-filter: blur(10px);
-  color: #01150a;
+  color: #0d0f0e;
   text-align: center;
   box-shadow: 0 8px 32px rgba(19, 1, 1, 0.938);
   margin: 0; /* remove margin */
@@ -99,7 +99,7 @@ html {
 }
 
 .highlight {
-  color: #0f0f0c;
+  color: #86395f;
 }
 
 .subtitle {
