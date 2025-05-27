@@ -49,7 +49,7 @@ export class StudentRegisterComponent {
         fullName: this.fullName?.value,
         email: this.email?.value,
         password: this.password?.value,
-        status: 'Pending' // Default status
+        status: 'Pending' //Default status
       };
 
      
