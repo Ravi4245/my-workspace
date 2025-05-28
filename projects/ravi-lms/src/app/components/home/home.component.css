@@ -86,7 +86,7 @@ html {
 
 /* Adjust margin to remove extra space from glass card */
 .glass-card {
-  background: rgba(141, 146, 146, 0.836);
+  background: rgba(101, 101, 101, 0.836);
   border-radius: 20px;
   padding: 40px;
   max-width: 700px;
@@ -98,7 +98,7 @@ html {
   margin: 0; /* remove margin */
 }
 .glass-card1{
-background: rgba(141, 146, 146, 0.836);
+ background: rgba(101, 101, 101, 0.836);
   border-radius: 20px;
   padding: 40px;
   max-width: 900px;
