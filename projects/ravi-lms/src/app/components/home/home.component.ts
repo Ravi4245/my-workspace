@@ -25,12 +25,12 @@ export class HomeComponent {
   ];
 
   bestCourses = [
-  { name: 'Fullstack', description: 'Frontend Framework', image: '/images/bg-blur9.jpg' },
-  { name: 'UX designer', description: 'Backend Framework', image: '/images/bg-blur7.jpg' },
-  { name: 'Cyber Security', description: 'Database Management', image: '/images/bg-blur8.jpg' },
-  { name: 'SQl Server', description: 'Backend', image: '/images/Sql.jpg' },
-  { name: 'Asp.Net Core', description: 'FullStack', image: '/images/phython.jpg' },
-  { name: 'Asp.Net Core', description: 'FullStack', image: '/images/Ai.jpg' },
+  { name: 'Fullstack', image: '/images/bg-blur9.jpg' },
+  { name: 'UX designer',  image: '/images/bg-blur7.jpg' },
+  { name: 'Cyber Security',  image: '/images/bg-blur8.jpg' },
+  { name: 'SQl Server', image: '/images/Sql.jpg' },
+  { name: 'Phython',  image: '/images/phython.jpg' },
+  { name: 'AI',  image: '/images/Ai.jpg' },
 ];
 
   goToStudentRegister() {

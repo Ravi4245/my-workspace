@@ -91,7 +91,7 @@ html {
   padding: 40px;
   max-width: 700px;
   width: 90%;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(1px);
   color: #e4eae7;
   text-align: center;
   box-shadow: 0 8px 32px rgb(1, 0, 0);
@@ -103,12 +103,12 @@ background: rgba(141, 146, 146, 0.836);
   padding: 40px;
   max-width: 900px;
   width: 90%;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(1px);
   color: #090a09;
   text-align: center;
   box-shadow: 0 8px 32px rgb(1, 0, 0);
   margin: 0; /* remove margin */
-   margin-bottom: 40px;
+   margin-bottom: 50px;
 }
 
 .para1{
@@ -211,7 +211,7 @@ background: rgba(141, 146, 146, 0.836);
     margin-top: 12px;
   font-size: 18px;
   font-weight: 600;
-  color: #9b1517;
+  color: #000000;
 
 }
 

@@ -29,7 +29,10 @@
   <div class="best-courses-section text-center">   
     <h2>Our Best Courses</h2>
     <div class="courses-row">
-      <img *ngFor="let course of bestCourses" [src]="course.image" [alt]="course.name" class="course-img" />   
+      <div class="course-card" *ngFor="let course of bestCourses">
+      <img [src]="course.image" [alt]="course.name" class="course-img" />
+      <div class="course-name">{{ course.name }}</div>
+    </div>
     </div>
   </div>
 
