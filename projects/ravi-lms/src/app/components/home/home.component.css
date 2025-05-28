@@ -82,6 +82,32 @@ html {
 .nav-link:hover {
   color: #00e6e6;
 }
+.nav-link {
+  color: white;              /* Default link text color */
+  text-decoration: none;
+  display: inline-flex;      /* Align icon and text horizontally */
+  align-items: center;       /* Vertically center icon and text */
+  transition: color 0.3s ease; /* Smooth text color transition */
+}
+
+.nav-link:hover {
+  color: #1a703d;            /* Text color changes to blue on hover */
+}
+
+.nav-link:hover .nav-icon {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(99%) saturate(749%) hue-rotate(200deg) brightness(96%) contrast(101%);
+  /* Changes white icon to blue on hover */
+}
+
+.nav-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease; /* Smooth icon color transition */
+}
+
+
 
 
 /* Adjust margin to remove extra space from glass card */
