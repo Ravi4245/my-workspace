@@ -5,9 +5,10 @@
   </div>
   <div class="nav-right">
     <a href="#" class="nav-link">Home</a>
-    <a href="#best-teachers" class="nav-link">About</a>
-   
+    <a href="#glass-card2" class="nav-link">About</a> 
+    <a href="#best-teachers" class="nav-link">Creatror</a>
   </div>
+
 </nav>
 <!-- <h1>this our page</h1> -->
 
@@ -25,21 +26,20 @@
   </div>
 
   <!-- Best Courses Section -->
-  <div class="best-courses-section text-center">
-    
+  <div class="best-courses-section text-center">   
     <h2>Our Best Courses</h2>
     <div class="courses-row">
-      <img *ngFor="let course of bestCourses" [src]="course.image" [alt]="course.name" class="course-img" />
-     
+      <img *ngFor="let course of bestCourses" [src]="course.image" [alt]="course.name" class="course-img" />   
     </div>
   </div>
 
-  <!-- Best Teachers Section -->
-  <div class="best-teachers-section">
-    <section id="best-teachers" style="padding: 50px; ">
-        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-          <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Who We Are</h2>
-          <p style="font-size: 1.5rem; color: #0a0b0b; line-height: 1.8;">
+
+<div class="who we are-section">
+  <section id="glass-card2">
+  <div class="glass-card1">
+     
+          <h1>Who We Are</h1>
+          <p class="para1" >
             Our Learning Management System (LMS) is designed to connect students with the best educators in the industry. 
             After teacher registration, admin approval is required to activate accounts. Once approved, teachers can create 
             courses and assignments directly from their dashboard.
@@ -48,11 +48,17 @@
             Students can register and, upon approval, gain access to courses, submit assignments, and track their learning 
             progress. The LMS ensures an organized, role-based experience for admins, teachers, and students alike.
           </p> -->
-          <p style="font-size: 1.5rem; color: #0c0000; line-height: 1.8;">
+          <p class="para2">
             Our platform empowers teachers with tools to manage educational content efficiently and helps students engage with 
             their learning journey in a structured, user-friendly environment.
-          </p>
-         </div>
+          </p>      
+    </div>
+   </section>
+</div>
+
+  <!-- Best Teachers Section -->
+  <div class="best-teachers-section">
+    <section id="best-teachers" style="padding: 50px; ">
           <h2>LMS Website Designer</h2>
           <div class="teachers-row">
            <div class="teacher-card" *ngFor="let teacher of bestTeachers">
