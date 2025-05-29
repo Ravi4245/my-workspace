@@ -37,6 +37,7 @@ const routes: Routes = [
     { path: 'sql.server', component: SqlServerComponent },
     { path: 'phython', component: PhythonComponent },
     { path: 'ai', component: AiComponent },
+    {path:'StudentRegister',component:StudentRegisterComponent}
 
  
 ];
