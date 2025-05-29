@@ -11,6 +11,7 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { TeacherDashboardComponent } from './app/Dashboard/teacher-dashboard/teacher-dashboard.component';
 import { AdminDashboardComponent } from './app/Dashboard/admin-dashboard/admin-dashboard.component';
+import { FullstackComponent } from './app/Courses/fullstack/fullstack.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
  {path: 'admin-dashboard',component:AdminDashboardComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  {path:'fullstack',component:FullstackComponent}
 
  
 ];

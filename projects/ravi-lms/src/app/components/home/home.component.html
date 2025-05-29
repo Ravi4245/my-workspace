@@ -38,7 +38,7 @@
     <h2>Our Best Courses</h2>
     <div class="courses-row">
       <div class="course-card" *ngFor="let course of bestCourses">
-      <img [src]="course.image" [alt]="course.name" class="course-img" />
+      <img [src]="course.image" [alt]="course.name" class="course-img" (click)="gotoFullstack()" />
       <div class="course-name">{{ course.name }}</div>
     </div>
     </div>

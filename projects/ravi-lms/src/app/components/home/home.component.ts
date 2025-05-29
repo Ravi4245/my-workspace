@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { FullstackComponent } from '../../Courses/fullstack/fullstack.component';
  
 @Component({
   selector: 'app-home',
@@ -43,5 +44,9 @@ export class HomeComponent {
 
   goToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  gotoFullstack(){
+    this.router.navigate(['/fullstack'])
   }
 }
