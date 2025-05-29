@@ -16,7 +16,11 @@ export class StudentRegisterComponent {
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.studentForm = this.fb.group({
-      fullName: ['', Validators.required],
+      fullName: ['', [
+    Validators.required,
+    Validators.maxLength(100),
+    Validators.pattern('^[a-zA-Z ]*$')  // Only letters and spaces
+  ]],
       email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
     });

@@ -21,7 +21,11 @@ export class TeacherRegisterComponent {
     private router: Router
   ) {
     this.teacherForm = this.fb.group({
-      fullName: ['', Validators.required],
+      fullName: ['', [
+    Validators.required,
+    Validators.maxLength(100),
+    Validators.pattern('^[a-zA-Z ]*$')  // ✅ Only alphabets and spaces
+  ]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,Validators.minLength(6)]]
     });

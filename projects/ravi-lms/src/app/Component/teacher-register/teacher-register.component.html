@@ -17,18 +17,22 @@
     <form [formGroup]="teacherForm" (ngSubmit)="onSubmit()">
       
       <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input
-          type="text"
-          id="fullName"
-          class="form-control"
-          formControlName="fullName"
-          placeholder="Enter Full Name"
-        />
-        <div class="text-danger" *ngIf="fullName?.touched && fullName?.invalid">
-          Full Name is required.
-        </div>
-      </div>
+  <label for="fullName">Full Name</label>
+  <input
+    type="text"
+    id="fullName"
+    class="form-control"
+    formControlName="fullName"
+    placeholder="Enter Full Name"
+  />
+  <div class="text-danger" *ngIf="fullName?.touched && fullName?.errors">
+    <div *ngIf="fullName?.errors?.['required']">Full Name is required.</div>
+    <div *ngIf="fullName?.errors?.['maxlength']">Full Name cannot exceed 100 characters.</div>
+    <div *ngIf="fullName?.errors?.['pattern']">
+      Please enter alphabets only. Numbers and special characters are not allowed.
+    </div>
+  </div>
+</div>
 
       <div class="form-group">
         <label for="email">Email</label>

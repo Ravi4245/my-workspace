@@ -23,6 +23,7 @@
         <div class="text-danger" *ngIf="fullName?.touched && fullName?.invalid">
           Full Name is required.
         </div>
+         <div class="text-danger" *ngIf="fullName?.errors?.['pattern']">Please enter alphabets only. Numbers are not allowed.</div>
       </div>
 
       <div class="form-group">
