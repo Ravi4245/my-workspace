@@ -12,6 +12,11 @@ import { importProvidersFrom } from '@angular/core';
 import { TeacherDashboardComponent } from './app/Dashboard/teacher-dashboard/teacher-dashboard.component';
 import { AdminDashboardComponent } from './app/Dashboard/admin-dashboard/admin-dashboard.component';
 import { FullstackComponent } from './app/Courses/fullstack/fullstack.component';
+import { UxComponent } from './app/Courses/ux/ux.component';
+import { CyberSecurityComponent } from './app/Courses/cyber.security/cyber.security.component';
+import { SqlServerComponent } from './app/Courses/sql.server/sql.server.component';
+import { PhythonComponent } from './app/Courses/phython/phython.component';
+import { AiComponent } from './app/Courses/ai/ai.component';
 
 
 
@@ -26,7 +31,12 @@ const routes: Routes = [
  {path: 'admin-dashboard',component:AdminDashboardComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  {path:'fullstack',component:FullstackComponent}
+  { path: 'fullstack', component: FullstackComponent },
+    { path: 'ux', component: UxComponent },
+    { path: 'cyber.security', component: CyberSecurityComponent },
+    { path: 'sql.server', component: SqlServerComponent },
+    { path: 'phython', component: PhythonComponent },
+    { path: 'ai', component: AiComponent },
 
  
 ];

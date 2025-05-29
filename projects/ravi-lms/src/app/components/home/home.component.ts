@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Route, Router, Routes } from '@angular/router';
 import { FullstackComponent } from '../../Courses/fullstack/fullstack.component';
+import { UxComponent } from '../../Courses/ux/ux.component';
+import { CyberSecurityComponent } from '../../Courses/cyber.security/cyber.security.component';
+import { SqlServerComponent } from '../../Courses/sql.server/sql.server.component';
+import { PhythonComponent } from '../../Courses/phython/phython.component';
+import { AiComponent } from '../../Courses/ai/ai.component';
  
 @Component({
   selector: 'app-home',
@@ -25,14 +30,19 @@ export class HomeComponent {
     { name: 'Harshad Shinde', subject: 'Dot.net Developer', image: '/images/Harsha1.jpg' },
   ];
 
-  bestCourses = [
-  { name: 'Fullstack', image: '/images/bg-blur9.jpg' },
-  { name: 'UX designer',  image: '/images/bg-blur7.jpg' },
-  { name: 'Cyber Security',  image: '/images/bg-blur8.jpg' },
-  { name: 'SQl Server', image: '/images/Sql.jpg' },
-  { name: 'Phython',  image: '/images/phython.jpg' },
-  { name: 'AI',  image: '/images/Ai.jpg' },
+
+
+
+
+bestCourses = [
+  { name: 'Fullstack', image: '/images/bg-blur9.jpg', route: 'fullstack' },
+  { name: 'UX designer', image: '/images/bg-blur7.jpg', route: 'ux' },
+  { name: 'Cyber Security', image: '/images/bg-blur8.jpg', route: 'cyber.security' },
+  { name: 'SQL Server', image: '/images/Sql.jpg', route: 'sql.server' },
+  { name: 'Python', image: '/images/phython.jpg', route: 'phython' },
+  { name: 'AI', image: '/images/Ai.jpg', route: 'ai' },
 ];
+
 
   goToStudentRegister() {
     this.router.navigate(['/student-register']);
@@ -46,7 +56,7 @@ export class HomeComponent {
     this.router.navigate(['/login']);
   }
 
-  gotoFullstack(){
-    this.router.navigate(['/fullstack'])
-  }
+gotoCourse(route: string) {
+  this.router.navigate([`/${route}`]);
+}
 }
