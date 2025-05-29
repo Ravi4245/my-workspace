@@ -20,7 +20,7 @@ export class HomeComponent {
     { name: 'Sumit Waghmare', subject: 'Dot.net Developer', image: '/images/Sumit.jpg.jpg' },
     { name: 'Saiganesh Raja', subject: 'Dot.net Developer', image: '/images/Sai.jpg' },
     { name: 'Ravi Deshmukh', subject: 'Dot.net Developer', image: '/images/Ravi.jpg' },
-    { name: 'Sidhesh Kadam', subject: 'Dot.net Developer', image: '/images/sidd.jpg.jpg' },
+    { name: 'Siddhesh Kadam', subject: 'Dot.net Developer', image: '/images/sidd.jpg.jpg' },
     { name: 'Harshad Shinde', subject: 'Dot.net Developer', image: '/images/Harsha1.jpg' },
   ];
 
