@@ -73,7 +73,7 @@
 
 /* What's Inside */
 .course-modules {
-  background-color: #f9f9f9;
+  background-color: #1a1919;
   padding: 2rem;
 }
 
@@ -81,6 +81,7 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
+  color: #ddd;
 }
 
 .modules-grid {
@@ -92,10 +93,10 @@
 }
 
 .module-card {
-  background: white;
+  background: rgb(234, 232, 232);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(255, 254, 254, 0.874);
   text-align: center;
   padding: 1rem;
   transition: transform 0.3s;
