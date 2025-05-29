@@ -40,7 +40,7 @@
 }
 
 .hero-text p {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -59,7 +59,7 @@
 
 /* Course Introduction */
 .course-intro {
-  padding: 2rem;
+  padding: 3rem;
   max-width: 900px;
   margin: auto;
 }
@@ -73,7 +73,7 @@
 
 /* What's Inside */
 .course-modules {
-  background-color: #f9f9f9;
+  background-color: #131111;
   padding: 2rem;
 }
 
@@ -81,6 +81,7 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
+  color: #ddd;
 }
 
 .modules-grid {
@@ -92,10 +93,10 @@
 }
 
 .module-card {
-  background: white;
+  background: rgb(228, 224, 224);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(247, 247, 247, 0.909);
   text-align: center;
   padding: 1rem;
   transition: transform 0.3s;
