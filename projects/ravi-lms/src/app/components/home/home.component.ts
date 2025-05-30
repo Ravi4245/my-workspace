@@ -44,7 +44,7 @@ bestCourses = [
 ];
 
 
-  goToStudentRegister() {
+  goToStudentRegiste() {
     this.router.navigate(['/student-register']);
   }
 
