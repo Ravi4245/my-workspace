@@ -123,6 +123,55 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
+      deleteStudent(studentId: number): void {
+      if (!confirm('Are you sure you want to delete this student?')) {
+        return;
+      }
+
+      try {
+        const headers = this.getAuthHeaders();
+
+        this.http.delete(`https://localhost:7071/api/Admin/student/${studentId}`, { headers })
+          .subscribe({
+            next: () => {
+              alert('Student deleted successfully');
+              this.loadPendingLists();
+              this.loadCounts();
+            },
+            error: () => alert('Failed to delete student')
+          });
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          alert(error.message);
+        }
+      }
+    }
+
+    deleteTeacher(teacherId: number): void {
+      if (!confirm('Are you sure you want to delete this teacher?')) {
+        return;
+      }
+
+      try {
+        const headers = this.getAuthHeaders();
+
+        this.http.delete(`https://localhost:7071/api/Admin/teacher/${teacherId}`, { headers })
+          .subscribe({
+            next: () => {
+              alert('Teacher deleted successfully');
+              this.loadPendingLists();
+              this.loadCounts();
+            },
+            error: () => alert('Failed to delete teacher')
+          });
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          alert(error.message);
+        }
+      }
+    }
+
+
   approveTeacher(teacherId: number): void {
     try {
       const headers = this.getAuthHeaders();
