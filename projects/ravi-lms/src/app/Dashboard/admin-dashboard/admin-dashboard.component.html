@@ -1,80 +1,122 @@
-<nav class="navbar">
-  <div class="navbar-brand">Admin Dashboard</div>
-  Hi Admin
-  <button (click)="logout()" class="logout-btn">Logout</button>
-</nav>
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-title">📊 Admin Panel</div>
+    <ul class="menu">
+  <li (click)="setSection('dashboard')">Dashboard</li>
+  <li (click)="setSection('pendingStudents')">Pending Students</li>
+  <li (click)="setSection('pendingTeachers')">Pending Teachers</li>
+  <li (click)="setSection('courses')">Courses</li>
+  <li (click)="logout()">Logout</li>
+</ul>
 
-<div class="counts-container">
-  <div class="count-box">
-    Pending Students 🎓<br />
-    <span class="count-number">{{ counts.pendingStudents }}</span>
-  </div>
-  <div class="count-box">
-    Approved Students 🎓<br />
-    <span class="count-number">{{ counts.approvedStudents }}</span>
-  </div>
-  <div class="count-box">
-    Pending Teachers 👨‍🏫<br />
-    <span class="count-number">{{ counts.pendingTeachers }}</span>
-  </div>
-  <div class="count-box">
-    Approved Teachers 👨‍🏫<br />
-    <span class="count-number">{{ counts.approvedTeachers }}</span>
-  </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <header class="dashboard-header">
+      <h1>Welcome, Admin 👋</h1>
+    </header>
+
+    <section class="stats-cards" *ngIf="activeSection === 'dashboard'">
+      <div class="stat-card stat-pending">
+        <h3>🎓 Pending Students</h3>
+        <span>{{ counts.pendingStudents }}</span>
+      </div>
+      <div class="stat-card stat-approved">
+        <h3>🎓 Approved Students</h3>
+        <span>{{ counts.approvedStudents }}</span>
+      </div>
+      <div class="stat-card stat-pending">
+        <h3>👨‍🏫 Pending Teachers</h3>
+        <span>{{ counts.pendingTeachers }}</span>
+      </div>
+      <div class="stat-card stat-approved">
+        <h3>👨‍🏫 Approved Teachers</h3>
+        <span>{{ counts.approvedTeachers }}</span>
+      </div>
+    </section>
+
+    <section class="data-section" *ngIf="activeSection === 'pendingStudents'">
+      <h2>Pending Students</h2>
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Email</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of pendingStudents">
+              <td>{{ student.studentId }}</td>
+              <td>{{ student.fullName }}</td>
+              <td>{{ student.email }}</td>
+              <td>
+                <button class="btn success" (click)="approveStudent(student.studentId)">✅ Approve</button>
+                <button class="btn danger" (click)="deleteStudent(student.studentId)">🗑️ Remove</button>
+
+              </td>
+            </tr>
+            <tr *ngIf="pendingStudents.length === 0">
+              <td colspan="4" class="no-data">No pending students</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="data-section" *ngIf="activeSection === 'pendingTeachers'">
+      <h2>Pending Teachers</h2>
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Email</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let teacher of pendingTeachers">
+              <td>{{ teacher.teacherId }}</td>
+              <td>{{ teacher.fullName }}</td>
+              <td>{{ teacher.email }}</td>
+              <td>
+                <button class="btn success" (click)="approveTeacher(teacher.teacherId)">✅ Approve</button>
+                <button class="btn danger" (click)="deleteTeacher(teacher.teacherId)">🗑️ Remove</button>
+              </td>
+            </tr>
+            <tr *ngIf="pendingTeachers.length === 0">
+              <td colspan="4" class="no-data">No pending teachers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="data-section" *ngIf="activeSection === 'courses'">
+      <h2>Courses</h2>
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Description</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of pendingCourses">
+              <td>{{ course.courseId }}</td>
+              <td>{{ course.courseName }}</td>
+              <td>{{ course.description }}</td>
+              <td>
+                <button class="btn info" (click)="updateCourse(course)">✏️ Update</button>
+                <button class="btn danger" (click)="deleteCourse(course.courseId)">🗑️ Delete</button>
+              </td>
+            </tr>
+            <tr *ngIf="pendingCourses.length === 0">
+              <td colspan="4" class="no-data">No courses found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 </div>
-
-<section class="pending-section">
-  <h2>Pending Students 🎓</h2>
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Student ID</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of pendingStudents">
-        <td>{{ student.studentId }}</td>
-        <td>{{ student.fullName }}</td>
-        <td>{{ student.email }}</td>
-        <td>
-          <button class="btn-approve" (click)="approveStudent(student.studentId)">Approve</button>
-          <button class="btn-delete" (click)="deleteStudent(student.studentId)">Remove</button>
-        </td>
-      </tr>
-      <tr *ngIf="pendingStudents.length === 0">
-        <td colspan="4" class="no-data">No pending students</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<section class="pending-section">
-  <h2>Pending Teachers 👨‍🏫</h2>
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Teacher ID</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let teacher of pendingTeachers">
-        <td>{{ teacher.teacherId }}</td>
-        <td>{{ teacher.fullName }}</td>
-        <td>{{ teacher.email }}</td>
-        <td>
-          <button class="btn-approve" (click)="approveTeacher(teacher.teacherId)">Approve</button>
-          <button class="btn-delete" (click)="deleteTeacher(teacher.teacherId)">Remove</button>
-        </td>
-      </tr>
-      <tr *ngIf="pendingTeachers.length === 0">
-        <td colspan="4" class="no-data">No pending teachers</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
