@@ -17,8 +17,20 @@ export class StudentDashboardComponent implements OnInit {
   studentProfile: any;
   enrolledCourses: any[] = [];
   approvedAssignments: any[] = [];
-
+  announcements: any[] = [];
   constructor(private http: HttpClient,private router: Router) {}
+
+   activeSection: 'assignments' | 'grades' | 'courses' | 'announcements' = 'assignments';
+
+     setActiveSection(section: 'assignments' | 'grades' | 'courses' | 'announcements') {
+    this.activeSection = section;
+  }
+
+  dashboardData = { 
+  courses: [],
+  assignments: [],
+  announcements: []
+};
 
   ngOnInit(): void {
     // Get student ID from localStorage (set during login)
@@ -28,6 +40,7 @@ export class StudentDashboardComponent implements OnInit {
       this.loadStudentProfile();
       this.loadCourses();
       this.loadAssignments();
+      this.loadAnnouncements();
     } else {
       console.error('Student ID not found in localStorage');
     }
@@ -74,6 +87,24 @@ export class StudentDashboardComponent implements OnInit {
   localStorage.clear(); // or remove specific items
   // Redirect to login page or home
     this.router.navigate(['/home']);
+}
+
+loadAnnouncements() {
+  this.http.get<any[]>(`https://localhost:7071/api/Announcement/latest`) // Adjust API path as per your backend
+    .subscribe({
+      next: (res) => {
+        this.announcements = res;
+      },
+      error: (err) => {
+        console.error('Error fetching announcements', err);
+      }
+    });
+}
+
+loadDashboardData() {
+  // API call that returns all three datasets in one response
+  this.http.get<any>(`https://localhost:7071/api/Student/dashboard/${this.studentId}`)
+    .subscribe(res => this.dashboardData = res);
 }
 
 }
