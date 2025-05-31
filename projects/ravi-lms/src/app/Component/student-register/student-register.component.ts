@@ -66,7 +66,7 @@ export class StudentRegisterComponent {
           },
           error: err => {
             console.error(err);
-            alert('Registration failed.');
+            alert('Registration failed ❌. Email Id alerady register.');
           }
         });
     }
