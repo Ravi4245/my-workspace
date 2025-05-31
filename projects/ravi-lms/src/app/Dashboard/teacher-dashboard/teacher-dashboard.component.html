@@ -1,41 +1,105 @@
-<div class="dashboard-container">
-  <nav class="navbar">
-    <div class="logo">Teacher Dashboard</div>
-   <button (click)="logout()" class="logout-btn">Logout</button>
-  </nav>
-
-  <div class="section-container">
-    <div class="card">
-      <h2>Create Courses</h2>
-      <input [(ngModel)]="newCourse.courseName" placeholder="Course Name" />
-      <textarea [(ngModel)]="newCourse.description" placeholder="Description"></textarea>
-      <button (click)="createCourse()">Create Course</button>
-    </div>
-
-    <div class="card">
-      <h2>Create Assignment</h2>
-      <select [(ngModel)]="newAssignment.courseId">
-        <option [value]="null">-- Select Course --</option>
-        <option *ngFor="let course of courses" [value]="course.courseId">{{ course.courseName }}</option>
-      </select>
-      <select [(ngModel)]="newAssignment.studentId">
-        <option [value]="null">-- Select Student --</option>
-        <option *ngFor="let student of students" [value]="student.studentId">{{ student.fullName }}</option>
-      </select>
-      <input [(ngModel)]="newAssignment.title" placeholder="Assignment Title" />
-      <textarea [(ngModel)]="newAssignment.description" placeholder="Description"></textarea>
-      <button (click)="createAssignment()">Create Assignment</button>
-    </div>
+<div class="dashboard">
+ <aside class="sidebar">
+  <div class="sidebar-header">
+       <img src="/images/RHSlogo.jpg" alt="Admin Avatar" class="admin-avatar" />
+      </div>
+  <div class="sidebar-logo">
+    <span class="logo-icon">🎓</span>Teacher Dashboard
   </div>
 
-  <div class="courses-section">
-    <h2>Your Created Courses</h2>
-    <div class="course-cards">
-      <div class="course-card" *ngFor="let course of courses">
+  <ul class="sidebar-menu">
+    <li 
+      [class.active]="activeSection === 'create-course'" 
+      (click)="navigateTo('create-course')"
+    >
+      ➕ Create Course
+    </li>
+
+    <li 
+      [class.active]="activeSection === 'create-assignment'" 
+      (click)="navigateTo('create-assignment')"
+    >
+      📝 Create Assignment
+    </li>
+
+    <li 
+      [class.active]="activeSection === 'my-courses'" 
+      (click)="navigateTo('my-courses')"
+    >
+      📘 My Courses
+    </li>
+
+    <li class="logout-btn" (click)="logout()">
+      🚪 Logout
+    </li>
+  </ul>
+</aside>
+
+
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Teacher Dashboard</h1>
+    </header>
+
+    <!-- Create Course Section -->
+    <section class="card-section animate-fade-in" *ngIf="activeSection === 'create-course'">
+  <div class="card fancy-card">
+    <h2 class="card-title">➕ Create a New Course</h2>
+    <label>Course Name</label>
+    <input [(ngModel)]="newCourse.courseName" placeholder="Enter course name" />
+
+    <label>Description</label>
+    <textarea [(ngModel)]="newCourse.description" placeholder="Enter course description"></textarea>
+
+    <button (click)="createCourse()">Create Course</button>
+  </div>
+</section>
+
+
+    <!-- Create Assignment Section -->
+    <section class="card-section animate-fade-in" *ngIf="activeSection === 'create-assignment'">
+  <div class="card fancy-card">
+    <h2 class="card-title">📝 Create Assignment</h2>
+
+    <label>Choose Course</label>
+    <select [(ngModel)]="newAssignment.courseId">
+      <option [value]="null">-- Select Course --</option>
+      <option *ngFor="let course of courses" [value]="course.courseId">{{ course.courseName }}</option>
+    </select>
+
+    <label>Choose Student</label>
+    <select [(ngModel)]="newAssignment.studentId">
+      <option [value]="null">-- Select Student --</option>
+      <option *ngFor="let student of students" [value]="student.studentId">{{ student.fullName }}</option>
+    </select>
+
+    <label>Assignment Title</label>
+    <input [(ngModel)]="newAssignment.title" placeholder="Enter assignment title" />
+
+    <label>Description</label>
+    <textarea [(ngModel)]="newAssignment.description" placeholder="Assignment details..."></textarea>
+
+    <button (click)="createAssignment()">Create Assignment</button>
+  </div>
+</section>
+
+
+    <!-- My Courses Section -->
+    <section class="courses-display animate-fade-in" *ngIf="activeSection === 'my-courses'">
+  <h2>Your Created Courses</h2>
+  <div class="course-cards">
+    <div class="course-card fancy" *ngFor="let course of courses">
+      <div class="card-header">
         <h3>{{ course.courseName }}</h3>
-        <p>{{ course.description }}</p>
-        <span>ID: {{ course.courseId }}</span>
+        <span class="course-id">#{{ course.courseId }}</span>
+      </div>
+      <p class="course-description">{{ course.description }}</p>
+      <div class="card-footer">
+        <span class="course-badge">Owned</span>
       </div>
     </div>
   </div>
+</section>
+
+  </main>
 </div>

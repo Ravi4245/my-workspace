@@ -236,3 +236,25 @@
 .main-content::-webkit-scrollbar-thumb:hover {
   background: #1a93e3;
 }
+
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0rem;
+}
+
+.admin-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #0a0a0a;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 12px #ecefeeaa;
+  transition: transform 0.3s ease;
+}
+
+.admin-avatar:hover {
+  transform: scale(1.1);
+}
