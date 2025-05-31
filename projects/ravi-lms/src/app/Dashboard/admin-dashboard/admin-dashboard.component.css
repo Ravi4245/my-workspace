@@ -38,7 +38,7 @@ body {
 }
 
 .menu li:hover {
-  color: #08aa5c;
+  color: #28900e;
 }
 
 .main-content {
@@ -55,17 +55,17 @@ body {
 .stats-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2.2rem;
   margin-bottom: 2rem;
 }
 
 .stat-card {
   flex: 1 1 220px;
-  background: white;
-  border-left: 6px solid #0984e3;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  background: rgb(194, 188, 188);
+  border-left: 15px solid #09e39e;
+  padding: 1rem 5.5rem;
+  border-radius: 52px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.886);
   transition: transform 0.3s;
 }
 
@@ -74,23 +74,24 @@ body {
 }
 
 .stat-approved {
-  border-left-color: #00b894;
+  border-left-color: #10b133;
 }
 
 .stat-pending {
-  border-left-color: #fdcb6e;
+  border-left-color: #c4d107;
 }
 
 .stat-card h3 {
   margin: 0;
-  font-size: 1rem;
-  color: #636e72;
+  font-size: 1.5rem;
+  color: #040404;
 }
 
 .stat-card span {
   font-size: 2rem;
   font-weight: bold;
-  color: #2d3436;
+  color: #000b0e;
+  
 }
 
 /* Tables */
@@ -123,7 +124,7 @@ body {
 
 .data-table td {
   padding: 1rem;
-  border-bottom: 1px solid #b0ceb0;
+  border-bottom: 1px solid #14d614;
   text-align: left;
   padding: 14px 20px;
   vertical-align: middle;
@@ -167,8 +168,8 @@ body {
   cursor: pointer;
   transition: 0.2s;
   margin-right: 6px;
-  padding: 10px 16px;
-  font-size: 14px;
+  padding: 10px 6px;
+  font-size: 12px;
   font-weight: 600;
   border-radius: 8px;
   border: none;
@@ -177,17 +178,17 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.879);
   transform: scale(1);
 }
 
 .btn.success {
-  background: linear-gradient(45deg, #00b894, #55efc4);
+  background: linear-gradient(45deg, #29c063, #297231);
   color: white;
 }
 
 .btn.danger {
- background: linear-gradient(45deg, #d63031, #ff7675);
+ background: linear-gradient(45deg, #d63031, #845454);
   color: white;
 }
 
