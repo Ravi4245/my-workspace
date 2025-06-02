@@ -85,9 +85,9 @@ body {
 }
 
 .menu li:hover {
-  background: #09e39e;
+  background: #56b66b;
   color: #1a1a2e;
-  box-shadow: 0 4px 15px #09e39eaa;
+  box-shadow: 0 4px 15px #919392a4;
   transform: translateX(8px);
 }
 
