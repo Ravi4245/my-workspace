@@ -1,14 +1,25 @@
+
+
+
 <div class="dashboard-layout">
+    
+
+
+
   <!-- Sidebar -->
   <aside class="sidebar">
+    <div class="sidebar-header">
+       <img src="/images/RHSlogo.jpg" alt="Admin Avatar" class="admin-avatar" />
     <div class="sidebar-title">📊 Admin Panel</div>
+    </div>
+    
     <ul class="menu">
-  <li (click)="setSection('dashboard')">Dashboard</li>
-  <li (click)="setSection('pendingStudents')">Pending Students</li>
-  <li (click)="setSection('pendingTeachers')">Pending Teachers</li>
-  <li (click)="setSection('courses')">Courses</li>
-  <li (click)="logout()">Logout</li>
-</ul>
+  <li (click)="setSection('dashboard')">📈 Dashboard</li>
+  <li (click)="setSection('pendingStudents')">🕒 Pending Students</li>
+  <li (click)="setSection('pendingTeachers')">👨‍🏫 Pending Teachers</li>
+  <li (click)="setSection('courses')">📚 Courses</li>
+  <li (click)="logout()" style="color: crimson;">🚪Logout</li>
+ </ul>
 
   </aside>
 

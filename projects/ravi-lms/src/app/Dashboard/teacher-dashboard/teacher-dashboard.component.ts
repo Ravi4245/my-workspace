@@ -28,13 +28,16 @@ interface Assignment {
   selector: 'app-teacher-dashboard',
   templateUrl: './teacher-dashboard.component.html',
   styleUrls: ['./teacher-dashboard.component.css'],
-  imports:[FormsModule,HttpClientModule,CommonModule]
+  standalone: true,
+  imports: [FormsModule, HttpClientModule, CommonModule]
 })
 export class TeacherDashboardComponent implements OnInit {
 
+  teacherId: number = 0;
+
+  // Data models
   courses: Course[] = [];
   students: Student[] = [];
-
 
   newCourse = {
     courseName: '',
@@ -48,40 +51,52 @@ export class TeacherDashboardComponent implements OnInit {
     studentId: null
   };
 
-  teacherId : number = 0; 
+  activeSection: string = 'create-course';
 
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-  const storedId = localStorage.getItem('teacherId');
-  if (storedId) {
-    this.teacherId = parseInt(storedId, 10);
-    this.loadCourses();
-    this.loadStudents();
-  } else {
-    alert('No teacher ID found. Please log in again.');
-    // Optionally redirect to login
+    const storedId = localStorage.getItem('teacherId');
+    if (storedId) {
+      this.teacherId = parseInt(storedId, 10);
+      this.loadCourses();
+      this.loadStudents();
+    } else {
+      alert('No teacher ID found. Please log in again.');
+      this.router.navigate(['/home']);
+    }
   }
+
+  // Section Navigation (used by sidebar)
+navigateTo(section: string): void {
+  this.activeSection = section;
 }
 
-  
-  
+  // Load courses by teacher
   loadCourses(): void {
     this.http.get<Course[]>(`https://localhost:7071/api/Course/byTeacher/${this.teacherId}`)
       .subscribe({
         next: (data) => this.courses = data,
-        error: (err) => console.error('Error loading courses:', err)
+        error: (err) => {
+          console.error('Error loading courses:', err);
+          alert('Failed to load courses. Please try again.');
+        }
       });
   }
 
+  // Load all students
   loadStudents(): void {
-    this.http.get<Student[]>('https://localhost:7071/api/Student/all') // or use /approved
+    this.http.get<Student[]>('https://localhost:7071/api/Student/all')
       .subscribe({
         next: (data) => this.students = data,
-        error: (err) => console.error('Error loading students:', err)
+        error: (err) => {
+          console.error('Error loading students:', err);
+          alert('Failed to load students.');
+        }
       });
   }
 
+  // Create a course
   createCourse(): void {
     const courseData = {
       courseName: this.newCourse.courseName,
@@ -96,10 +111,14 @@ export class TeacherDashboardComponent implements OnInit {
           this.newCourse = { courseName: '', description: '' };
           this.loadCourses();
         },
-        error: (err) => console.error('Error creating course:', err)
+        error: (err) => {
+          console.error('Error creating course:', err);
+          alert('Course creation failed.');
+        }
       });
   }
 
+  // Create an assignment
   createAssignment(): void {
     if (!this.newAssignment.courseId || !this.newAssignment.studentId) {
       alert('Please select a course and a student.');
@@ -119,14 +138,16 @@ export class TeacherDashboardComponent implements OnInit {
           alert('Assignment created successfully!');
           this.newAssignment = { courseId: null, title: '', description: '', studentId: null };
         },
-        error: (err) => console.error('Error adding assignment:', err)
+        error: (err) => {
+          console.error('Error adding assignment:', err);
+          alert('Assignment creation failed.');
+        }
       });
   }
 
-    logout() {
-  localStorage.clear(); // or remove specific items
-  // Redirect to login page or home
+  // Logout logic
+  logout(): void {
+    localStorage.clear();
     this.router.navigate(['/home']);
-}
-
+  }
 }
