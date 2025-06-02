@@ -18,7 +18,7 @@
       <ul class="sidebar-nav">
 
         <li><a href="#" (click)="setActiveSection('assignments'); $event.preventDefault()" [class.active]="activeSection === 'assignments'">📝 Assignments</a></li>
-            <li><a href="#" (click)="setActiveSection('grades'); $event.preventDefault()" [class.active]="activeSection === 'grades'">📊 Grades</a></li>
+        <li><a href="#" (click)="setActiveSection('grades'); $event.preventDefault()" [class.active]="activeSection === 'grades'">📊 Grades</a></li>
         <li><a href="#" (click)="setActiveSection('courses'); $event.preventDefault()" [class.active]="activeSection === 'courses'">📘 Courses</a></li>
         <li><a href="#" (click)="setActiveSection('announcements'); $event.preventDefault()" [class.active]="activeSection === 'announcements'">📣 Announcements</a></li>
       </ul>
@@ -37,11 +37,14 @@
       <section *ngIf="activeSection === 'assignments'" id="assignments" class="section">
         <h2>📝 Your Assignments</h2>
         <div *ngIf="approvedAssignments.length > 0; else noAssignments" class="card-grid">
-          <div *ngFor="let assignment of approvedAssignments" class="card assignment-card">
+          <article *ngFor="let assignment of approvedAssignments" 
+                   class="card assignment-card" 
+                   tabindex="0" 
+                   [attr.aria-label]="'Assignment: ' + assignment.title">
             <h3>{{ assignment.title }}</h3>
             <p><strong>Course:</strong> {{ assignment.courseName }}</p>
             <p>{{ assignment.description }}</p>
-          </div>
+          </article>
         </div>
         <ng-template #noAssignments>
           <p class="no-data">You have no assignments yet.</p>
@@ -52,10 +55,13 @@
       <section *ngIf="activeSection === 'courses'" id="courses" class="section">
         <h2>📘 Your Courses</h2>
         <div *ngIf="enrolledCourses.length > 0; else noCourses" class="card-grid">
-          <div *ngFor="let course of enrolledCourses" class="card course-card">
+          <article *ngFor="let course of enrolledCourses" 
+                   class="card course-card" 
+                   tabindex="0" 
+                   [attr.aria-label]="'Course: ' + course.courseName">
             <h3>{{ course.courseName }}</h3>
             <p>{{ course.description }}</p>
-          </div>
+          </article>
         </div>
         <ng-template #noCourses>
           <p class="no-data">You are not enrolled in any courses yet.</p>
@@ -66,11 +72,14 @@
       <section *ngIf="activeSection === 'announcements'" id="announcements" class="section">
         <h2>📣 Latest Announcements</h2>
         <div *ngIf="announcements.length > 0; else noAnnouncements" class="announcement-list">
-          <div *ngFor="let announcement of announcements" class="card announcement-card">
+          <article *ngFor="let announcement of announcements" 
+                   class="card announcement-card" 
+                   tabindex="0" 
+                   [attr.aria-label]="'Announcement: ' + announcement.title">
             <h4>{{ announcement.title }}</h4>
             <p>{{ announcement.content }}</p>
             <small><i>Posted on: {{ announcement.datePosted | date }}</i></small>
-          </div>
+          </article>
         </div>
         <ng-template #noAnnouncements>
           <p class="no-data">No announcements available.</p>

@@ -4,36 +4,44 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+// Optional: Create an interface for Course to add type safety
+interface Course {
+  courseId: number;
+  courseName: string;
+  description: string;
+  teacherId: number;
+}
+
+// Optional: Interface for Student Profile (basic)
+interface StudentProfile {
+  studentId: number;
+  fullName: string;
+  email: string;
+  status: string;
+  // add other properties if needed
+}
+
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.component.html',
-  styleUrl: './student-dashboard.component.css',
+  styleUrls: ['./student-dashboard.component.css'],
   standalone: true,
-  imports: [FormsModule,HttpClientModule,CommonModule]
+  imports: [FormsModule, HttpClientModule, CommonModule],
 })
 export class StudentDashboardComponent implements OnInit {
   studentId: number = 0;
   studentName: string = '';
-  studentProfile: any;
-  enrolledCourses: any[] = [];
+  studentProfile?: StudentProfile;
+
+  enrolledCourses: Course[] = [];
   approvedAssignments: any[] = [];
   announcements: any[] = [];
-  constructor(private http: HttpClient,private router: Router) {}
 
-   activeSection: 'assignments' | 'grades' | 'courses' | 'announcements' = 'assignments';
+  activeSection: 'assignments' | 'grades' | 'courses' | 'announcements' = 'assignments';
 
-     setActiveSection(section: 'assignments' | 'grades' | 'courses' | 'announcements') {
-    this.activeSection = section;
-  }
-
-  dashboardData = { 
-  courses: [],
-  assignments: [],
-  announcements: []
-};
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    // Get student ID from localStorage (set during login)
     const idFromStorage = localStorage.getItem('studentId');
     if (idFromStorage) {
       this.studentId = parseInt(idFromStorage, 10);
@@ -43,87 +51,61 @@ export class StudentDashboardComponent implements OnInit {
       this.loadAnnouncements();
     } else {
       console.error('Student ID not found in localStorage');
+      // Maybe redirect to login page here if needed
     }
   }
 
+  setActiveSection(section: 'assignments' | 'grades' | 'courses' | 'announcements') {
+    this.activeSection = section;
+  }
+
   loadStudentProfile() {
-    this.http.get<any>(`https://localhost:7071/api/Student/${this.studentId}`)
-      .subscribe({
-        next: (res) => {
-          this.studentProfile = res;
-          this.studentName = res.fullName;
-        },
-        error: (err) => {
-          console.error('Error fetching student profile', err);
-        }
-      });
+    this.http.get<StudentProfile>(`https://localhost:7071/api/Student/${this.studentId}`).subscribe({
+      next: (res) => {
+        this.studentProfile = res;
+        this.studentName = res.fullName;
+      },
+      error: (err) => {
+        console.error('Error fetching student profile', err);
+      },
+    });
   }
 
   loadCourses() {
-    this.http.get<any[]>(`https://localhost:7071/api/Course/student/${this.studentId}`)
-      .subscribe({
-        next: (res) => {
-          this.enrolledCourses = res;
-        },
-        error: (err) => {
-          console.error('Error fetching enrolled courses', err);
-        }
-      });
+    this.http.get<Course[]>(`https://localhost:7071/api/Course/student/${this.studentId}`).subscribe({
+      next: (res) => {
+        this.enrolledCourses = res;
+      },
+      error: (err) => {
+        console.error('Error fetching enrolled courses', err);
+      },
+    });
   }
 
   loadAssignments() {
-    this.http.get<any[]>(`https://localhost:7071/api/Assignment/byStudent/${this.studentId}`)
-      .subscribe({
-        next: (res) => {
-          this.approvedAssignments = res;
-        },
-        error: (err) => {
-          console.error('Error fetching assignments', err);
-        }
-      });
+    this.http.get<any[]>(`https://localhost:7071/api/Assignment/byStudent/${this.studentId}`).subscribe({
+      next: (res) => {
+        this.approvedAssignments = res;
+      },
+      error: (err) => {
+        console.error('Error fetching assignments', err);
+      },
+    });
   }
 
-  logout() {
-  localStorage.clear(); // or remove specific items
-  // Redirect to login page or home
-    this.router.navigate(['/home']);
-}
-
-loadAnnouncements() {
-  this.http.get<any[]>(`https://localhost:7071/api/Announcement/latest`) // Adjust API path as per your backend
-    .subscribe({
+  loadAnnouncements() {
+    this.http.get<any[]>(`https://localhost:7071/api/Announcement/latest`).subscribe({
       next: (res) => {
         this.announcements = res;
       },
       error: (err) => {
         console.error('Error fetching announcements', err);
-      }
+      },
     });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/home']);
+  }
 }
-
-loadDashboardData() {
-  // API call that returns all three datasets in one response
-  this.http.get<any>(`https://localhost:7071/api/Student/dashboard/${this.studentId}`)
-    .subscribe(res => this.dashboardData = res);
-}
-
-}
-
-
-    // if (this.studentId) {
-    //   this.http
-    //     .get<any[]>(`https://localhost:7058/api/Assignment/byStudent/${this.studentId}`)
-    //     .subscribe({
-    //       next: (res) => {
-    //         this.approvedAssignments = res;
-    //       },
-    //       error: (err) => {
-    //         console.error('Error fetching assignments', err);
-    //       },
-    //     });
-    // } else {
-    //   console.error('Student ID not found in localStorage.');
-    // }
-  
-
-
