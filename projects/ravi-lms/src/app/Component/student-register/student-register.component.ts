@@ -26,6 +26,10 @@ export class StudentRegisterComponent {
     });
   }
    
+
+
+
+  
       get fullName() {
       return this.studentForm.get('fullName');
     }
