@@ -11,24 +11,50 @@ html {
 }
 
 .home-wrapper {
-  background-image: url('/images/lms3.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  
-  /* Make full screen and center contents */
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 100px 20px 50px;
+  overflow: hidden; /* Ensures blur doesn't bleed out */
+  z-index: 0;
+}
 
+.home-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('/images/lms3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  filter: blur(3px); /* Adjust blur strength as needed */
+  z-index: -1; /* Places it behind the content */
+}
+
+
+/* .home-wrapper {
+  background-image: url('/images/lms3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 100px 20px 50px;
   position: relative;
 
-  
-}
+} */
 
 
 /* navbaar */
