@@ -39,6 +39,9 @@ export class AdminDashboardComponent implements OnInit {
   pendingStudents: Student[] = [];
   pendingTeachers: Teacher[] = [];
   pendingCourses: Course[] = [];
+  approvedStudents: Student[] = [];
+  approvedTeachers: Teacher[] = [];
+
   counts: Counts = {
     pendingStudents: 0,
     approvedStudents: 0,
@@ -56,6 +59,7 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPendingLists();
+     this.loadApprovedLists();
     this.loadCounts();
     this.loadCourses();  // load courses as well
   }
@@ -213,6 +217,7 @@ updateCourse(course: Course): void {
             next: () => {
               alert('Student deleted successfully');
               this.loadPendingLists();
+               this.loadApprovedLists();
               this.loadCounts();
             },
             error: () => alert('Failed to delete student')
@@ -237,9 +242,32 @@ updateCourse(course: Course): void {
             next: () => {
               alert('Teacher deleted successfully');
               this.loadPendingLists();
+               this.loadApprovedLists(); 
               this.loadCounts();
             },
             error: () => alert('Failed to delete teacher')
+          });
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          alert(error.message);
+        }
+      }
+    }
+
+        loadApprovedLists(): void {
+      try {
+        const headers = this.getAuthHeaders();
+
+        this.http.get<Student[]>('https://localhost:7071/api/Admin/students/approved', { headers })
+          .subscribe({
+            next: (students) => this.approvedStudents = students,
+            error: (err) => alert("Error loading approved students: " + err.message)
+          });
+
+        this.http.get<Teacher[]>('https://localhost:7071/api/Admin/teachers/approved', { headers })
+          .subscribe({
+            next: (teachers) => this.approvedTeachers = teachers,
+            error: (err) => alert("Error loading approved teachers: " + err.message)
           });
       } catch (error: unknown) {
         if (error instanceof Error) {
@@ -268,5 +296,8 @@ updateCourse(course: Course): void {
       }
     }
   }
+
+
+
 }  
 

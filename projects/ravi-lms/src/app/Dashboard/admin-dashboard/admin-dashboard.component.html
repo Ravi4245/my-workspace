@@ -15,9 +15,11 @@
     
     <ul class="menu">
   <li (click)="setSection('dashboard')">📈 Dashboard</li>
-  <li (click)="setSection('pendingStudents')">🕒 Pending Students</li>
+  <li (click)="setSection('pendingStudents')">🕒 Pending Students</li> 
   <li (click)="setSection('pendingTeachers')">👨‍🏫 Pending Teachers</li>
   <li (click)="setSection('courses')">📚 Courses</li>
+  <li (click)="setSection('approvedStudents')">✅ Approved Students</li>
+  <li (click)="setSection('approvedTeachers')">✅ Approved Teachers</li>
   <li (click)="logout()" style="color: crimson;">🚪Logout</li>
  </ul>
 
@@ -129,5 +131,59 @@
         </table>
       </div>
     </section>
+
+      <section class="data-section" *ngIf="activeSection === 'approvedStudents'">
+        <h2>Approved Students</h2>
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th><th>Name</th><th>Email</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of approvedStudents">
+                <td>{{ student.studentId }}</td>
+                <td>{{ student.fullName }}</td>
+                <td>{{ student.email }}</td>
+                <td>
+                  <button class="btn danger" (click)="deleteStudent(student.studentId)">🗑️ Remove</button>
+                </td>
+              </tr>
+              <tr *ngIf="approvedStudents.length === 0">
+                <td colspan="4" class="no-data">No approved students</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+       
+        <section class="data-section" *ngIf="activeSection === 'approvedTeachers'">
+          <h2>Approved Teachers</h2>
+          <div class="card">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th><th>Name</th><th>Email</th><th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let teacher of approvedTeachers">
+                  <td>{{ teacher.teacherId }}</td>
+                  <td>{{ teacher.fullName }}</td>
+                  <td>{{ teacher.email }}</td>
+                  <td>
+                    <button class="btn danger" (click)="deleteTeacher(teacher.teacherId)">🗑️ Remove</button>
+                  </td>
+                </tr>
+                <tr *ngIf="approvedTeachers.length === 0">
+                  <td colspan="4" class="no-data">No approved teachers</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
   </main>
 </div>   

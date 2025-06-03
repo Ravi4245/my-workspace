@@ -19,7 +19,7 @@
 
         <li><a href="#" (click)="setActiveSection('assignments'); $event.preventDefault()" [class.active]="activeSection === 'assignments'">📝 Assignments</a></li>
         <li><a href="#" (click)="setActiveSection('grades'); $event.preventDefault()" [class.active]="activeSection === 'grades'">📊 Grades</a></li>
-        <li><a href="#" (click)="setActiveSection('courses'); $event.preventDefault()" [class.active]="activeSection === 'courses'">📘 Courses</a></li>
+        <!-- <li><a href="#" (click)="setActiveSection('courses'); $event.preventDefault()" [class.active]="activeSection === 'courses'">📘 Courses</a></li> -->
         <li><a href="#" (click)="setActiveSection('announcements'); $event.preventDefault()" [class.active]="activeSection === 'announcements'">📣 Announcements</a></li>
       </ul>
     </aside>
@@ -28,10 +28,52 @@
     <main class="main-content">
 
       <!-- Grades Section (placeholder) -->
-      <section *ngIf="activeSection === 'grades' " id="grades" class="section">
-        <h2>📊 Your Grades</h2>
-        <p>Grades data coming soon...</p>
-      </section>
+ <!-- Grades Section -->
+<section *ngIf="activeSection === 'grades'" id="grades" class="section grades-section">
+  <h2>📊 Your Grades</h2>
+
+  <!-- Static Grades Table -->
+  <table class="grades-table">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Assignment</th>
+        <th>Grade</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mathematics</td>
+        <td>Algebra Test</td>
+        <td>A</td>
+        
+      </tr>
+      <tr>
+        <td>English</td>
+        <td>Essay Submission</td>
+        <td>B+</td>
+        
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td>Lab Report</td>
+        <td>A-</td>
+       
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Static Graph Image -->
+ <!-- Graph Section -->
+<div class="grades-graph">
+  <h3>📈 Grade Overview</h3>
+  <img src="/images/graph1.jpg.png" alt="Student Grades Graph" class="graph-image" />
+</div>
+
+</section>
+
+
 
       <!-- Assignments Section -->
       <section *ngIf="activeSection === 'assignments'" id="assignments" class="section">
@@ -51,7 +93,7 @@
         </ng-template>
       </section>
 
-      <!-- Courses Section -->
+      <!-- Courses Section
       <section *ngIf="activeSection === 'courses'" id="courses" class="section">
         <h2>📘 Your Courses</h2>
         <div *ngIf="enrolledCourses.length > 0; else noCourses" class="card-grid">
@@ -66,7 +108,8 @@
         <ng-template #noCourses>
           <p class="no-data">You are not enrolled in any courses yet.</p>
         </ng-template>
-      </section>
+      </section> -->
+
 
       <!-- Announcements Section -->
       <section *ngIf="activeSection === 'announcements'" id="announcements" class="section">
