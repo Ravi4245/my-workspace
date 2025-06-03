@@ -157,7 +157,7 @@ background: rgba(198, 225, 195, 0.836);
 }
 
 .highlight {
-  color: #a3088c;
+  color: #88054b;
 }
 
 .subtitle {
@@ -200,7 +200,7 @@ background: rgba(198, 225, 195, 0.836);
 /* Courses Section */
 .best-courses-section {
   margin-top: 60px;
-  color: black;
+  color: rgb(9, 9, 9);
   text-align: center;
    margin-bottom: 90px;
 }
