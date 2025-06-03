@@ -30,16 +30,21 @@
   </div>
 
   <!-- Best Courses Section -->
-  <div class="best-courses-section text-center">  
-    <section id="best-courses"></section> 
-    <h2>Our Best Courses</h2>
-    <div class="courses-row">
-        <div class="course-card" *ngFor="let course of bestCourses">
-          <img [src]="course.image" [alt]="course.name" class="course-img" (click)="gotoCourse(course.route)" />
+   <div class="best-courses-section text-center" >  
+  <section id="best-courses"></section> 
+  <h2>Our Best Courses</h2>
+  <div class="scroll-container">
+    <div class="scroll-content">
+      <div class="course-card" *ngFor="let course of bestCourses">
+        <img [src]="course.image" [alt]="course.name" class="course-img" (click)="gotoCourse(course.route)" />
         <div class="course-name">{{ course.name }}</div>
-       </div>
+      </div>
     </div>
   </div>
+</div>
+
+
+
 
 
 <div class="who we are-section">
@@ -65,6 +70,7 @@
 </div>
 
   <!-- Best Teachers Section -->
+   
   <div class="best-teachers-section">
     <section id="best-teachers" style="padding: 50px; ">
           <h2>LMS Website Designer</h2>
@@ -77,6 +83,7 @@
       </div>
     </section>
    </div>
+   
 
 
   <!-- <footer class="footer" style="text-align: center; padding: 20px; background-color: #1c1c1e;">

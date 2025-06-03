@@ -350,6 +350,60 @@ body, html {
 
 
 
+.scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 250px; /* Adjust based on your card size */
+}
+
+.scroll-content {
+  display: flex;
+  animation: scroll-left 10s linear infinite; 
+  gap: 60px;
+}
+
+.course-card {
+  flex: 0 0 auto;
+  width: 200px; /* Width of each card */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.course-card:hover {
+  transform: scale(1.05);
+}
+
+.course-img {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.course-name {
+  padding: 10px;
+  font-weight: 600;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll-container:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+
 
 
 
