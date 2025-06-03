@@ -29,19 +29,37 @@
     </div>
   </div>
 
-  <!-- Best Courses Section -->
-   <div class="best-courses-section text-center" >  
-  <section id="best-courses"></section> 
-  <h2>Our Best Courses</h2>
-  <div class="scroll-container">
-    <div class="scroll-content">
-      <div class="course-card" *ngFor="let course of bestCourses">
-        <img [src]="course.image" [alt]="course.name" class="course-img" (click)="gotoCourse(course.route)" />
-        <div class="course-name">{{ course.name }}</div>
+      <!-- Best Courses Section -->
+    <!-- Best Courses Section -->
+    <div class="best-courses-section text-center">
+      <section id="best-courses">
+        <h2>Our Best Courses</h2>
+
+       <div class="coverflow-container">
+        <button class="nav-btn prev-btn" (click)="prev()">‹</button>
+
+        <div class="coverflow-wrapper">
+          <div class="coverflow-track" [style.transform]="transformStyle">
+            <div
+              class="course-card"
+              *ngFor="let course of bestCourses; let i = index"
+              [class.active]="i === currentIndex"
+              [style.transform]="getCardTransform(i)"
+              (click)="gotoCourse(course.route)"
+            >
+              <img [src]="course.image" [alt]="course.name" />
+              <div class="course-name">{{ course.name }}</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn next-btn" (click)="next()">›</button>
       </div>
-    </div>
+
+    
+  </section>
   </div>
-</div>
+
 
 
 

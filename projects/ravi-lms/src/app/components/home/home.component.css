@@ -348,69 +348,97 @@ body, html {
   transition: transform 0.3s;
 }
 
+/* coursser */
 
-
-.scroll-container {
-  width: 100%;
-  overflow: hidden;
+.coverflow-container {
   position: relative;
-  height: 250px; /* Adjust based on your card size */
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  perspective: 1200px;
+  overflow: visible;
 }
 
-.scroll-content {
+.coverflow-wrapper {
+  overflow: visible;
+  width: 100%;
+  height: 250px;
   display: flex;
-  animation: scroll-left 10s linear infinite; 
-  gap: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.coverflow-track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+  position: relative;
+  height: 250px;
+  width: 100%;
 }
 
 .course-card {
-  flex: 0 0 auto;
-  width: 200px; /* Width of each card */
+  position: absolute;
+  width: 220px;
+  height: 250px;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   cursor: pointer;
-  transition: transform 0.3s;
+  user-select: none;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden;
 }
 
-.course-card:hover {
-  transform: scale(1.05);
-}
-
-.course-img {
+.course-card img {
   width: 100%;
   height: 150px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 15px 15px 0 0;
   object-fit: cover;
 }
 
 .course-name {
-  padding: 10px;
-  font-weight: 600;
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.course-card.active {
+  filter: drop-shadow(0 0 15px rgba(0,0,0,0.3));
+  z-index: 10;
+}
+  
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: background-color 0.3s;
+  user-select: none;
 }
 
-.scroll-container:hover .scroll-content {
-  animation-play-state: paused;
+.nav-btn:hover {
+  background: white;
 }
 
+.prev-btn {
+  left: 10px;
+}
 
-
-
-
-
-
-
-
-
-
-
+.next-btn {
+  right: 10px;
+}
